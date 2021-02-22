@@ -178,7 +178,6 @@ Dubai.getcustomer();
 Dubai.render();
 console.log(Dubai);
 
-
 const Paris =  {
 
     location:'Paris',
@@ -235,7 +234,6 @@ Paris.getCookiesSales();
 Paris.getcustomer();
 Paris.render();
 console.log(Paris);
-
 
 const Lima =  {
 
