@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 let hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
 //let locationArr = ['Seattle','Tokyo','Dubai','Paris','Lima'];
@@ -113,6 +113,10 @@ function generateRandomNumber( min, max ) {
   return Math.floor( Math.random() * ( max - min + 1 ) + min );
 }
 
+ 
+  
+const Seattle =  {
+
 header();
 const Seattle = new Locations( 'Seattle',23,65,6.3 );
 Seattle.getCookiesSales();
@@ -143,6 +147,7 @@ footer();
 
 
 /*const Seattle =  {
+
 
   location:'Seattle',
   minNumberOfCustomer : 23 ,
@@ -437,3 +442,4 @@ Lima.render();
 console.log( Lima );
 */
 
+*/
