@@ -85,6 +85,7 @@ function footer () {
   let locationArr = [Seattle,Tokyo,Dubai,Paris,Lima];
   let totalOfHour = 0;
   let totalOftotal=0;
+  
 
 
   const tr3Element = document.createElement( 'tr' );
@@ -103,10 +104,11 @@ function footer () {
     for ( let z = 0 ;z < locationArr.length;z++ ) {
 
       totalOfHour = totalOfHour + locationArr[z].Sales[i];
+
     }
 
     th4Element.textContent = totalOfHour;
-
+    totalOfHour = 0;
   }
 
 
