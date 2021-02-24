@@ -89,8 +89,6 @@ function footer () {
   // let totalOfHour = 0;
   // let totalOftotal=0;
 
-
-
   const tr3Element = document.createElement( 'tr' );
   tableElement.appendChild( tr3Element );
 
