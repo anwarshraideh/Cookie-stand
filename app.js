@@ -7,6 +7,8 @@ const articleElement = document.createElement( 'article' );
 parentElement.appendChild( articleElement );
 const tableElement = document.createElement ( 'table' );
 articleElement.appendChild( tableElement );
+let totalOfHour = 0;
+let totalOftotal=0;
 
 
 function Locations( location ,minNumberOfCustomer ,maxNumberOfCustomer,averageNumberOfCookiespurchased ) {
@@ -19,7 +21,6 @@ function Locations( location ,minNumberOfCustomer ,maxNumberOfCustomer,averageNu
   this.total= 0;
   allLocations.push( this );
 
-
 }
 
 Locations.prototype.getCookiesSales =function () {
@@ -27,8 +28,8 @@ Locations.prototype.getCookiesSales =function () {
     // eslint-disable-next-line no-undef
     let cookies =Math.ceil( generateRandomNumber ( this.minNumberOfCustomer, this.maxNumberOfCustomer ) * this.averageNumberOfCookiespurchased );
     this.Sales.push( cookies );
-    this.total +=cookies;
-    console.log( cookies );
+    this.total += cookies;
+    //console.log( cookies );
   }
 };
 
@@ -36,7 +37,7 @@ Locations.prototype.getcustomer = function () {
   for ( let index = 0; index < hours.length; index++ ) {
     let customer= generateRandomNumber( this.minNumberOfCustomer, this.maxNumberOfCustomer );
     this.customerPerHour.push( customer );
-    console.log( customer );
+    //console.log( customer );
   }
 };
 
@@ -85,8 +86,8 @@ Locations.prototype.render = function() {
 
 function footer () {
   //let locationArr = [Seattle,Tokyo,Dubai,Paris,Lima];
-  let totalOfHour = 0;
-  let totalOftotal=0;
+  // let totalOfHour = 0;
+  // let totalOftotal=0;
 
 
 
@@ -130,6 +131,8 @@ function generateRandomNumber( min, max ) {
   return Math.floor( Math.random() * ( max - min + 1 ) + min );
 }
 
+
+
 header();
 const Seattle = new Locations( 'Seattle',23,65,6.3 );
 Seattle.getCookiesSales();
@@ -156,3 +159,33 @@ Lima.getCookiesSales();
 Lima.getcustomer();
 Lima.render();
 footer();
+
+const formElement = document.getElementById( 'addLocationForm' );
+formElement.addEventListener( 'submit', function( event ) {
+  event.preventDefault();
+
+  tableElement.removeChild( tableElement.lastChild );
+
+  const locationName = event.target.locationName.value;
+  const MinNumberOfCustomer= Number( event.target.MinNumberOfCustomer.value );
+  const MaxNumberOfCustomer = Number( event.target.MaxNumberOfCustomer.value );
+  const AverageNumberOfCookiespurchased = Number( event.target.AverageNumberOfCookiespurchased.value );
+
+  formElement.reset();
+
+  const NewLocation = new Locations( locationName , MinNumberOfCustomer , MaxNumberOfCustomer , AverageNumberOfCookiespurchased );
+
+  NewLocation.getcustomer();
+  NewLocation.getCookiesSales();
+  NewLocation.render();
+  footer();
+
+  //console.log( Locations.allLocations );
+
+} );
+
+
+
+
+
+
