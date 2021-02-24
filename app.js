@@ -1,7 +1,7 @@
 'use strict';
 
 let hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
-
+let allLocations =[];
 const parentElement = document.getElementById( 'Sales Data' );
 const articleElement = document.createElement( 'article' );
 parentElement.appendChild( articleElement );
@@ -17,6 +17,8 @@ function Locations( location ,minNumberOfCustomer ,maxNumberOfCustomer,averageNu
   this.customerPerHour = [];
   this.Sales = [];
   this.total= 0;
+  allLocations.push( this );
+
 
 }
 
@@ -82,10 +84,10 @@ Locations.prototype.render = function() {
 };
 
 function footer () {
-  let locationArr = [Seattle,Tokyo,Dubai,Paris,Lima];
+  //let locationArr = [Seattle,Tokyo,Dubai,Paris,Lima];
   let totalOfHour = 0;
   let totalOftotal=0;
-  
+
 
 
   const tr3Element = document.createElement( 'tr' );
@@ -101,9 +103,9 @@ function footer () {
     const th4Element = document.createElement( 'th' );
     tr3Element.appendChild( th4Element );
 
-    for ( let z = 0 ;z < locationArr.length;z++ ) {
+    for ( let z = 0 ;z < allLocations.length;z++ ) {
 
-      totalOfHour = totalOfHour + locationArr[z].Sales[i];
+      totalOfHour = totalOfHour + allLocations[z].Sales[i];
 
     }
 
@@ -114,9 +116,9 @@ function footer () {
 
   const th5Element = document.createElement( 'th' );
   tr3Element.appendChild( th5Element );
-  for ( let index = 0; index < locationArr.length; index++ ) {
+  for ( let index = 0; index < allLocations.length; index++ ) {
 
-    totalOftotal = totalOftotal + locationArr[index].total;
+    totalOftotal = totalOftotal + allLocations[index].total;
   }
 
   th5Element.textContent = totalOftotal;
