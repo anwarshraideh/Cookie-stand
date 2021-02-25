@@ -8,7 +8,7 @@ parentElement.appendChild( articleElement );
 const tableElement = document.createElement ( 'table' );
 articleElement.appendChild( tableElement );
 let totalOfHour = 0;
-let totalOftotal=0;
+
 
 
 function Locations( location ,minNumberOfCustomer ,maxNumberOfCustomer,averageNumberOfCookiespurchased ) {
@@ -102,7 +102,7 @@ function footer () {
     const th4Element = document.createElement( 'th' );
     tr3Element.appendChild( th4Element );
 
-    for ( let z = 0 ;z < allLocations.length;z++ ) {
+    for ( let z = 0 ; z < allLocations.length ; z++ ) {
 
       totalOfHour = totalOfHour + allLocations[z].Sales[i];
 
@@ -112,24 +112,20 @@ function footer () {
     totalOfHour = 0;
   }
 
-
   const th5Element = document.createElement( 'th' );
   tr3Element.appendChild( th5Element );
-  for ( let index = 0; index < allLocations.length; index++ ) {
+  let totalOftotal = 0;
+  for ( let index = 0; index < allLocations.length ; index++ ) {
 
     totalOftotal = totalOftotal + allLocations[index].total;
   }
 
   th5Element.textContent = totalOftotal;
-
-
 }
 
 function generateRandomNumber( min, max ) {
   return Math.floor( Math.random() * ( max - min + 1 ) + min );
 }
-
-
 
 header();
 const Seattle = new Locations( 'Seattle',23,65,6.3 );
@@ -162,17 +158,18 @@ const formElement = document.getElementById( 'addLocationForm' );
 formElement.addEventListener( 'submit', function( event ) {
   event.preventDefault();
 
-  tableElement.removeChild( tableElement.lastChild );
 
   const locationName = event.target.locationName.value;
   const MinNumberOfCustomer= Number( event.target.MinNumberOfCustomer.value );
   const MaxNumberOfCustomer = Number( event.target.MaxNumberOfCustomer.value );
   const AverageNumberOfCookiespurchased = Number( event.target.AverageNumberOfCookiespurchased.value );
 
-  formElement.reset();
 
+  tableElement.removeChild( tableElement.lastChild );
+  formElement.reset();
   const NewLocation = new Locations( locationName , MinNumberOfCustomer , MaxNumberOfCustomer , AverageNumberOfCookiespurchased );
 
+ 
   NewLocation.getcustomer();
   NewLocation.getCookiesSales();
   NewLocation.render();
